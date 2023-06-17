@@ -5,7 +5,7 @@ from sqlalchemy.sql.expression import text
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import String, ForeignKey, DECIMAL, DateTime
 
-from database.base import Base
+from .base import Base
 
 
 class Expense(Base):

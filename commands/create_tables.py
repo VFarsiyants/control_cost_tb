@@ -1,8 +1,8 @@
-from database.base import engine, Base
+from database.connection import engine
+from database.models import Base
 
 
 class HandleCommand:
     @classmethod
     def command(cls):
-        from database import models
         Base.metadata.create_all(engine)

@@ -2,7 +2,9 @@ from aiogram import types
 from bot.base import dp
 
 from database.models import User
-from database.base import Session
+from database.connection import Session
+
+from bot.keybord import inline_menu
 
 
 @dp.message_handler(commands=['start'])
@@ -13,7 +15,10 @@ async def register_user(message: types.Message):
             User.tg_username == user_info.username).\
             first()
         if user:
-            return await message.answer(f'Привет, {user.name}')
+            return await message.answer(
+                f'Hello, {user.name}',
+                reply_markup=inline_menu
+            )
         user = User(
             name=user_info.first_name,
             surname=user_info.last_name,
@@ -21,4 +26,6 @@ async def register_user(message: types.Message):
         )
         session.add(user)
         session.commit()
-    await message.answer(f'Привет, {user.name}, ты зарегистрирован')
+    await message.answer(
+        f'Hello, {user.name}, you are registered',
+        reply_markup=inline_menu)
