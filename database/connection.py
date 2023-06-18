@@ -7,10 +7,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-db_user = os.getenv('DB_USER')
-db_password = os.getenv('DB_PASSWORD')
+db_user = os.getenv('POSTGRES_USER')
+db_password = os.getenv('POSTGRES_PASSWORD')
 db_port = os.getenv('DB_PORT')
-db_name = os.getenv('DB_NAME')
+db_name = os.getenv('POSTGRES_DB')
 db_host = os.getenv('DB_HOST')
 db_echo = os.getenv("DB_ECHO").lower() in ["true", "yes", "1"]
 

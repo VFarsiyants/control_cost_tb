@@ -6,10 +6,10 @@ from database.connection import engine as connectable
 from database.connection import db_url as url
 from database.models.base import Base
 
-db_user = os.getenv('DB_USER')
-db_password = os.getenv('DB_PASSWORD')
+db_user = os.getenv('POSTGRES_USER')
+db_password = os.getenv('POSTGRES_PASSWORD')
 db_port = os.getenv('DB_PORT')
-db_name = os.getenv('DB_NAME')
+db_name = os.getenv('POSTGRES_DB')
 db_host = os.getenv('DB_HOST')
 
 url = f'postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}'

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: db
+    ports:
+      - '5432'
+    env_file:
+      - .env
+    image: postgres:15
+  control_cost_app:
+    container_name: main_app
+    entrypoint: /usr/src/control_cost_bot/docker-entrypoint.sh
+    build: .
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=db
+    depends_on:
+      - db
