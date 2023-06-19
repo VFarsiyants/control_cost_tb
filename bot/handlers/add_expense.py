@@ -8,7 +8,7 @@ from aiogram.dispatcher import FSMContext
 from sqlalchemy import select, bindparam, insert
 
 from bot.base import dp, bot
-from bot.keybord import inline_menu
+from bot.keybord import inline_menu, cancel_menu
 from database.models import User, Expense
 from database.connection import Session
 
@@ -29,6 +29,7 @@ async def add_expense(callback_query: CallbackQuery):
     await bot.send_message(
         callback_query.from_user.id,
         'How much did you spend?',
+        reply_markup=cancel_menu
     )
 
 
@@ -40,7 +41,7 @@ async def process_name(message: Message, state: FSMContext):
     '''
     error_msg = f'Wrong amount format. Please provide amount \n'\
                 f'in xxxx.xx format for example: 1984.32'
-    await message.reply(error_msg)
+    await message.reply(error_msg, reply_markup=cancel_menu)
 
 
 @dp.message_handler(lambda message: match(cost_pattern, message.text), 
@@ -53,7 +54,7 @@ async def process_name(message: Message, state: FSMContext):
         data['cost'] = message.text
 
     await ExpenseForm.next()
-    await message.reply("What did you buy?")
+    await message.reply("What did you buy?", reply_markup=cancel_menu)
 
 
 @dp.message_handler(state=ExpenseForm.name)

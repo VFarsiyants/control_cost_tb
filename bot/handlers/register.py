@@ -27,5 +27,5 @@ async def register_user(message: types.Message):
         session.add(user)
         session.commit()
     await message.answer(
-        f'Hello, {user.name}, you are registered',
+        f'Hello, {user_info.first_name}, you are registered',
         reply_markup=inline_menu)
