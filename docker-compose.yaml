@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   db:
+    restart: always
     container_name: db
     ports:
       - '5432:5432'
@@ -9,6 +10,7 @@ services:
       - .env
     image: postgres:15
   control_cost_app:
+    restart: always
     container_name: main_app
     entrypoint: /usr/src/control_cost_bot/docker-entrypoint.sh
     build: .
