@@ -1,0 +1,51 @@
+[
+    {
+        "model": "category",
+        "pk": "1",
+        "fields": {
+            "name": "transport"
+        }
+    },
+    {
+        "model": "category",
+        "pk": "2",
+        "fields": {
+            "name": "groceries"
+        }
+    },
+    {
+        "model": "category",
+        "pk": "3",
+        "fields": {
+            "name": "health"
+        }
+    },
+    {
+        "model": "category",
+        "pk": "4",
+        "fields": {
+            "name": "education"
+        }
+    },
+    {
+        "model": "category",
+        "pk": "5",
+        "fields": {
+            "name": "utilities"
+        }
+    },
+    {
+        "model": "category",
+        "pk": "6",
+        "fields": {
+            "name": "leisure"
+        }
+    },
+    {
+        "model": "category",
+        "pk": "7",
+        "fields": {
+            "name": "other"
+        }
+    }
+]

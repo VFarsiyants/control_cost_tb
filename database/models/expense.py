@@ -21,6 +21,8 @@ class Expense(Base):
         server_default=text('NOW()'),
         nullable=False
     )
+    category_id: Mapped[int] = mapped_column(ForeignKey("category.id"), 
+                                             nullable=True)
 
     def __repr__(self) -> str:
         return f'{self.name} - {self.cost} rub.\{self.created_at}'
