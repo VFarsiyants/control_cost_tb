@@ -10,7 +10,7 @@
         "model": "category",
         "pk": "2",
         "fields": {
-            "name": "groceries"
+            "name": "food"
         }
     },
     {
@@ -31,7 +31,7 @@
         "model": "category",
         "pk": "5",
         "fields": {
-            "name": "utilities"
+            "name": "communal payments"
         }
     },
     {
@@ -46,6 +46,20 @@
         "pk": "7",
         "fields": {
             "name": "other"
+        }
+    },
+    {
+        "model": "category",
+        "pk": "8",
+        "fields": {
+            "name": "clothes"
+        }
+    },
+    {
+        "model": "category",
+        "pk": "9",
+        "fields": {
+            "name": "home"
         }
     }
 ]
