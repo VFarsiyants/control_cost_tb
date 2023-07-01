@@ -54,7 +54,7 @@ async def process_name(message: Message, state: FSMContext):
         data['cost'] = message.text
 
     await ExpenseForm.next()
-    await message.reply("What did you buy?", reply_markup=cancel_menu)
+    await message.reply('What did you buy?', reply_markup=cancel_menu)
 
 
 @dp.message_handler(state=ExpenseForm.name)
@@ -67,24 +67,24 @@ async def process_name(message: Message, state: FSMContext):
         __inser_expense(username=message.from_user.username, **data)
 
     await state.finish()
-    await message.reply("Expense is recorded", reply_markup=inline_menu)
+    await message.reply('Expense is recorded', reply_markup=inline_menu)
 
 
 def __inser_expense(*, username, cost, name):
     with Session.begin() as session:
         scalar_subq = (
             select(User.id)
-            .where(User.tg_username == bindparam("username"))
+            .where(User.tg_username == bindparam('username'))
             .scalar_subquery()
         )
         session.execute(
             insert(Expense).values(user_id=scalar_subq),
             [
                 {
-                    "username": username,
-                    "cost": Decimal(cost),
-                    "created_at": datetime.now(),
-                    "name": name
+                    'username': username,
+                    'cost': Decimal(cost),
+                    'created_at': datetime.now(),
+                    'name': name
                 },
             ],
         )

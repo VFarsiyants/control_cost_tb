@@ -13,6 +13,6 @@ async def cancel(callback_query: CallbackQuery, state: FSMContext):
     await state.finish()
     await bot.send_message(
         callback_query.from_user.id,
-        'What you would like to do?',
+        'What would you like to do?',
         reply_markup=inline_menu
     )
